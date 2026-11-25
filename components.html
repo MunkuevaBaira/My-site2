@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Компоненты</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-controls">
+      <button id="theme-toggle" title="Сменить тему">🌙</button>
+      <button id="accessibility-toggle" title="Настройки для слабовидящих">👁️</button>
+    </div>
+    
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню">
+      <span class="menu-toggle__icon"></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="index.html">Обо мне</a>
+      <a href="index.html#skills">Навыки</a>
+      <a href="index.html#projects">Проекты</a>
+      <a href="index.html#contacts">Контакты</a>
+      <a href="components.html">UI Компоненты</a>
+    </nav>
+
+    <h1>UI Кит</h1>
+    <p>Библиотека компонентов</p>
+  </header>
+
+  <main style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+    <!-- 1. Меню-бургер -->
+    <section style="margin-bottom: 60px; border-bottom: 1px solid var(--color-border); padding-bottom: 40px;">
+      <h2>1. Меню-бургер</h2>
+      <p>Уменьшите ширину экрана ниже 700px, чтобы протестировать мобильное меню.</p>
+    </section>
+
+    <!-- 2. Модальное окно -->
+    <section style="margin-bottom: 60px; border-bottom: 1px solid var(--color-border); padding-bottom: 40px;">
+      <h2>2. Модальное окно</h2>
+      <button class="btn" data-open-modal="#modal-contact">Записаться на консультацию</button>
+    </section>
+
+    <!-- 3. Слайдер -->
+    <section style="margin-bottom: 60px; border-bottom: 1px solid var(--color-border); padding-bottom: 40px;">
+      <h2>3. Слайдер</h2>
+      <div class="slider">
+        <div class="slider__viewport">
+          <div class="slider__track">
+            <div class="slider__slide">
+              <article style="width: 100%; height: 100%; border: none; box-shadow: none; background: transparent;">
+                <h3>🐾 Ветеринарная клиника</h3>
+                <p>Сайт для ветеринарной клиники с информацией об услугах, профилями врачей и онлайн-записью на прием.</p>
+              </article>
+            </div>
+            <div class="slider__slide">
+              <article style="width: 100%; height: 100%; border: none; box-shadow: none; background: transparent;">
+                <h3>✈️ Блог о путешествиях</h3>
+                <p>Многостраничный сайт с картой поездок и галереей фотографий.</p>
+              </article>
+            </div>
+            <div class="slider__slide">
+              <article style="width: 100%; height: 100%; border: none; box-shadow: none; background: transparent;">
+                <h3>📚 Список книг</h3>
+                <p>Интерактивный список прочитанного с поиском и фильтрами.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+        <button class="slider__btn slider__btn--prev" aria-label="Назад">‹</button>
+        <button class="slider__btn slider__btn--next" aria-label="Вперед">›</button>
+        <div class="slider__dots"></div>
+      </div>
+    </section>
+
+    <!-- 4. Табы -->
+    <section>
+      <h2>4. Вкладки (Табы)</h2>
+      <div class="tabs" style="display: flex; flex-direction: column; gap: 16px;">
+        <div class="tabs__list" role="tablist" style="display: flex; gap: 8px; border-bottom: 2px solid var(--color-border);">
+          <button class="tabs__tab is-active" role="tab" aria-selected="true" data-tab="#tab-1">Описание</button>
+          <button class="tabs__tab" role="tab" aria-selected="false" data-tab="#tab-2">Характеристики</button>
+          <button class="tabs__tab" role="tab" aria-selected="false" data-tab="#tab-3">Отзывы</button>
+        </div>
+        <div class="tabs__panel" id="tab-1" role="tabpanel">
+          <p>Текст описания компонента...</p>
+        </div>
+        <div class="tabs__panel" id="tab-2" role="tabpanel" hidden>
+          <p>Список характеристик...</p>
+        </div>
+        <div class="tabs__panel" id="tab-3" role="tabpanel" hidden>
+          <p>Отзывы пользователей...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- МОДАЛКА -->
+  <div class="modal-overlay" id="modal-contact" role="dialog" aria-modal="true" hidden>
+    <div class="modal">
+      <h2>Форма связи</h2>
+      <form class="modal__form">
+        <label for="m-name">Имя</label>
+        <input type="text" id="m-name" required>
+        <label for="m-phone">Телефон</label>
+        <input type="tel" id="m-phone" required>
+        <button type="submit" class="btn">Отправить</button>
+      </form>
+      <button class="modal__close" data-close-modal>✕</button>
+    </div>
+  </div>
+
+  <!-- ПАНЕЛЬ ДЛЯ СЛАБОВИДЯЩИХ -->
+  <div id="accessibility-panel" class="acc-panel" aria-hidden="true">
+    <div class="acc-header">
+      <h3>Настройки сайта</h3>
+      <button id="acc-close" title="Закрыть">✖</button>
+    </div>
+    <div class="acc-content">
+      <div class="acc-group">
+        <span>Размер шрифта:</span>
+        <div class="acc-buttons">
+          <button id="acc-font-down">A-</button>
+          <button id="acc-font-reset">A</button>
+          <button id="acc-font-up">A+</button>
+        </div>
+      </div>
+      <div class="acc-group">
+        <span>Цветовая схема:</span>
+        <div class="acc-themes">
+          <button class="acc-color-btn" data-theme="default" style="background:#fff; color:#000;">Аа</button>
+          <button class="acc-color-btn" data-theme="bw" style="background:#fff; color:#000; border: 1px solid #000;">Аа</button>
+          <button class="acc-color-btn" data-theme="wb" style="background:#000; color:#fff;">Аа</button>
+          <button class="acc-color-btn" data-theme="bb" style="background:#99ccff; color:#000080;">Аа</button>
+        </div>
+      </div>
+      <div class="acc-group">
+        <label class="acc-checkbox">
+          <input type="checkbox" id="acc-images"> Отключить изображения
+        </label>
+      </div>
+      <div class="acc-group">
+        <label class="acc-checkbox">
+          <input type="checkbox" id="acc-speech"> Озвучивать текст
+        </label>
+      </div>
+      <button id="acc-reset-all" class="acc-reset-btn">Сбросить всё</button>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
